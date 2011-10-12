@@ -1,15 +1,23 @@
-﻿(function() {
+﻿// ==UserScript==
+// @include http://twitter.com/
+// @include https://twitter.com/
+// ==/UserScript==
 
-if(window.location.hostname.indexOf('twitter.com') == 0) {
-  window.document.addEventListener('DOMNodeInserted', deShortenURL, false);
-}
+(function() {
+
+window.document.addEventListener('DOMNodeInserted', deShortenURL, false);
 
 function deShortenURL(event) {
-  var link = event.srcElement.querySelector('a[data-expanded-url]');
+  var links = event.srcElement.querySelectorAll('a[data-expanded-url]');
+  var nodeClass = event.srcElement.getAttribute('class');
 
-  if(link && event.srcElement.getAttribute('class') == 'js-stream-item stream-item' || event.srcElement.getAttribute('class') == 'component') {
-    link.firstChild.data = link.href;
-    link.href = link.getAttribute('data-expanded-url');
+  if(links && nodeClass == 'js-stream-item stream-item' || nodeClass == 'component') {
+    for(var i = 0; i < links.length; i++) {
+      var link = links[i];
+
+      link.firstChild.data = link.href;
+      link.href = link.getAttribute('data-expanded-url');
+    }
   }
 }
 
