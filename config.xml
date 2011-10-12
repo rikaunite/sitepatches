@@ -1,0 +1,6 @@
+﻿<widget xmlns="http://www.w3.org/ns/widgets">
+  <name>sitepatchs</name>
+  <description>Site specified patches.</description>
+  <author email="jiongtl@gmail.com">rikaunite</author>
+  <icon src="images/icon.png" />
+</widget>
