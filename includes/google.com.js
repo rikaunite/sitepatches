@@ -1,6 +1,6 @@
 ﻿// ==UserScript==
-// @include http://www.google.*/*
-// @include https://encrypted.google.com/*
+// @include http://www.google.*/search*
+// @include https://www.google.*/search*
 // ==/UserScript==
 
 (function() {
