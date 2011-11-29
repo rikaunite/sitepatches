@@ -5,24 +5,24 @@
 
 (function() {
 
-window.document.addEventListener('DOMNodeInserted', replaceURL, false);
+window.document.addEventListener('DOMNodeInserted', replace_url, false);
 
-function replaceURL(event) {
+function replace_url(event) {
   var links = event.srcElement.querySelectorAll('a[data-expanded-url]');
-  var nodeClass = event.srcElement.getAttribute('class');
+  var node_class = event.srcElement.getAttribute('class');
 
-  if(links.length > 0 && (nodeClass == 'js-stream-item stream-item' || nodeClass == 'component')) {
+  if(links.length > 0 && (node_class == 'stream-item-content tweet js-actionable-tweet js-stream-tweet stream-tweet  ' || node_class == 'js-stream-item stream-item' || node_class == 'component')) {
     for(var i = 0; i < links.length; i++) {
       var link = links[i];
 
-      link.addEventListener('DOMAttrModified', replaceToUltimateURL, false);
+      link.addEventListener('DOMAttrModified', replace_url_ultimate, false);
       link.firstChild.data = link.href;
       link.href = link.getAttribute('data-expanded-url');
     }
   }
 }
 
-function replaceToUltimateURL(event) {
+function replace_url_ultimate(event) {
   if(event.attrName == 'data-ultimate-url') {
     var link = event.srcElement;
     var url = link.getAttribute(event.attrName);
@@ -33,7 +33,7 @@ function replaceToUltimateURL(event) {
       link.href = url;
     }
 
-    link.removeEventListener('DOMAttrModified', replaceToUltimateURL, false);
+    link.removeEventListener('DOMAttrModified', replace_url_ultimate, false);
   }
 }
 
