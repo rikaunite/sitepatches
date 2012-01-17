@@ -11,7 +11,6 @@ window.document.addEventListener('DOMNodeInserted', replace_url, false);
 
 function replace_url(event) {
   var links = event.srcElement.querySelectorAll('a[data-expanded-url]');
-  var node_class = event.srcElement.getAttribute('class');
 
   if(links.length > 0) {
     for(var i = 0; i < links.length; i++) {
